@@ -1,0 +1,17 @@
+header{
+  width: 100%;
+  background-color: #FFD32C;
+  height: 10vh;
+
+  div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+
+  }
+}

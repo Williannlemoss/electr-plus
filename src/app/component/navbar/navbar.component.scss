@@ -1,0 +1,39 @@
+div{
+
+  nav{
+    button{
+      border: none;
+
+      span{
+        background-image: url("../../../assets/collicone.png") !important;
+      }
+    }
+  }
+
+  div{
+    position: absolute;
+    background-color: #FFD32C;
+    right: 0;
+    width: 50%;
+
+    height: 91vh;
+
+
+    nav{
+      ul{
+        list-style-type: none;
+
+        li{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          justify-items: center;
+
+          color: #6B6B6B;
+          font-weight: normal;
+          font-size: 48px;
+        }
+      }
+    }
+  }
+}
