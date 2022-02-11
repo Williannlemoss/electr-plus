@@ -1,0 +1,80 @@
+<elp-header [title]="'Quarto'"></elp-header>
+
+<main>
+  <section></section>
+
+  <section>
+    <span>carrosel</span>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Position Column -->
+      <ng-container matColumnDef="qtd">
+        <th mat-header-cell *matHeaderCellDef>Qtd</th>
+        <td mat-cell *matCellDef="let element">{{ element.qtd }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="aparelho">
+        <th mat-header-cell *matHeaderCellDef>Aparelho</th>
+        <td mat-cell *matCellDef="let element">{{ element.aparelho }}</td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="uso">
+        <th mat-header-cell *matHeaderCellDef>Uso/Dia</th>
+        <td mat-cell *matCellDef="let element">{{ element.uso }}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="kw">
+        <th mat-header-cell *matHeaderCellDef>KW/Mês</th>
+        <td mat-cell *matCellDef="let element">{{ element.kw }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="custo">
+        <th mat-header-cell *matHeaderCellDef>Custo/Mês</th>
+        <td mat-cell *matCellDef="let element">{{ element.custo }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="acoes">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button>
+            <mat-icon>close</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <div class="info">
+      <h2>Total do Cômodo</h2>
+
+      <div class="info-content">
+        <div>
+          <h3>Eletrodoméstico</h3>
+          <h4>Televisão, Iluminação, Ar condicionado</h4>
+        </div>
+
+        <div>
+          <h3>Consumo</h3>
+          <h4>231,35 kWh</h4>
+        </div>
+
+        <div>
+          <h3>Custo</h3>
+          <h4>R$194,15</h4>
+        </div>
+
+        <div>
+          <h3>Tarifa</h3>
+          <h4>R$0,82701</h4>
+        </div>
+      </div>
+    </div>
+
+    <button class="geral">Resultado geral</button>
+  </section>
+</main>

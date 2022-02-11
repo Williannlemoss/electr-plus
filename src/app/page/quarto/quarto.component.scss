@@ -1,0 +1,70 @@
+main {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+
+  section:first-child {
+    background-image: url("../../../assets/quarto.jpg");
+    width: 100%;
+    height: 90vh;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+
+  section:last-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    table {
+      width: 90%;
+      font-size: 12px;
+
+      button {
+        background: none;
+        cursor: pointer;
+        outline: 0;
+        border: none;
+        color: red;
+      }
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+
+      h2 {
+        font-size: 18px;
+        font-weight: 500;
+        margin: 20px 0;
+      }
+
+      .info-content {
+        display: flex;
+        justify-content: space-between;
+        div {
+          max-width: 25%;
+        }
+        display: flex;
+        h2,
+        h3,
+        h4 {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .geral {
+      background: #ffd32c;
+      color: #000;
+      width: 200px;
+      height: 45px;
+      border-radius: 15px;
+      cursor: pointer;
+      outline: 0;
+      border: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+}
