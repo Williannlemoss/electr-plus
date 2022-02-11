@@ -1,35 +1,34 @@
-div{
-
-  nav{
-    button{
+div {
+  nav {
+    button {
       border: none;
+      outline: none;
+      cursor: pointer;
 
-      span{
+      span {
         background-image: url("../../../assets/collicone.png") !important;
       }
     }
   }
 
-  div{
+  div {
     position: absolute;
-    background-color: #FFD32C;
+    background-color: #ffd32c;
     right: 0;
-    width: 50%;
-
+    width: 40%;
     height: 91vh;
 
-
-    nav{
-      ul{
+    nav {
+      
+      ul {
         list-style-type: none;
 
-        li{
+        li {
           display: flex;
           align-items: center;
           justify-content: center;
           justify-items: center;
-
-          color: #6B6B6B;
+          color: #6b6b6b;
           font-weight: normal;
           font-size: 48px;
         }
