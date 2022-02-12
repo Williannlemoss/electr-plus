@@ -4,40 +4,42 @@
   <div class="square"></div>
 
   <div class="form-content">
-    <mat-form-field appearance="outline">
-      <mat-label>Nome do Aparelho</mat-label>
-      <input matInput placeholder="Ex: Televisão" />
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Quantidade</mat-label>
-      <input matInput placeholder="Ex: 1" />
-    </mat-form-field>
-
-    <div style="display: flex; justify-content: space-between">
+    <form [formGroup]="registerForm">
       <mat-form-field appearance="outline">
-        <mat-label>Tempo de Uso</mat-label>
-        <input matInput placeholder="Ex: 4" />
+        <mat-label>Nome do Aparelho</mat-label>
+        <input matInput placeholder="Ex: Televisão" formControlName="nome" />
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Horas/D</mat-label>
-        <input disabled matInput />
-      </mat-form-field>
-    </div>
-
-    <div style="display: flex; justify-content: space-between">
-      <mat-form-field appearance="outline">
-        <mat-label>Potência</mat-label>
-        <input matInput placeholder="Ex: 2" />
+        <mat-label>Quantidade</mat-label>
+        <input matInput placeholder="Ex: 1" formControlName="qtd" />
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
-        <mat-label>w</mat-label>
-        <input disabled matInput />
-      </mat-form-field>
-    </div>
+      <div style="display: flex; justify-content: space-between">
+        <mat-form-field appearance="outline">
+          <mat-label>Tempo de Uso</mat-label>
+          <input matInput placeholder="Ex: 4" formControlName="uso" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Horas/D</mat-label>
+          <input disabled matInput />
+        </mat-form-field>
+      </div>
+
+      <div style="display: flex; justify-content: space-between">
+        <mat-form-field appearance="outline">
+          <mat-label>Potência</mat-label>
+          <input matInput placeholder="Ex: 2" formControlName="potencia" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>w</mat-label>
+          <input disabled matInput />
+        </mat-form-field>
+      </div>
+    </form>
   </div>
 
-  <button>Adicionar</button>
+  <button (click)="salvarEletrodomestico()">Adicionar</button>
 </main>
