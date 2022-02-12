@@ -2,6 +2,21 @@ main {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
 
+  mat-icon{
+    background: #ffd32c;
+      color: #000;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      outline: 0;
+      border: none;
+      
+  }
+
   section:first-child {
     background-image: url("../../../assets/quarto.jpg");
     width: 100%;

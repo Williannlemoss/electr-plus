@@ -6,6 +6,8 @@ import {FooterModule} from "../../component/footer";
 import { QuartoComponent } from './quarto.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
+import { MatCarouselModule } from 'ng-mat-carousel';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import {MatIconModule} from '@angular/material/icon';
         HeaderModule,
         FooterModule,
         MatTableModule,
-        MatIconModule
+        MatIconModule,
+        MatDialogModule,
+        MatCarouselModule.forRoot()
     ]
 })
 export class QuartoModule { }

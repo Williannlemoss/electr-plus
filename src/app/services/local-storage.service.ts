@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Eletrodomestico } from 'src/models/eletrodomestico.model';
 
 @Injectable({
   providedIn: 'root',
@@ -27,15 +29,20 @@ export class LocalStorageService {
   }
 
   getAll() {
-    var values = [],
+    var eletrodomesticos: Eletrodomestico[] = [],
       keys = Object.keys(localStorage),
       i = keys.length;
 
     while (i--) {
-      values.push(this.storage.getItem(keys[i]));
+      const eletro = this.storage.getItem(keys[i]);
+
+      if (eletro) {
+        const eletroConverter = JSON.parse(eletro);
+        eletrodomesticos.push(eletroConverter);
+      }
     }
 
-    return values;
+    return eletrodomesticos;
   }
 
   clear(): boolean {

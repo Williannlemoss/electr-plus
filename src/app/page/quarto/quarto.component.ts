@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { Eletrodomestico } from 'src/models/eletrodomestico.model';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogAddComponent } from 'src/app/component/dialog-add/dialog-add.component';
 
 export interface PeriodicElement {
   qtd: number;
@@ -10,17 +12,10 @@ export interface PeriodicElement {
   custo: number;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  { qtd: 1, aparelho: 'Hydrogen', uso: 1.0079, kw: 'H', custo: 2 },
-  { qtd: 2, aparelho: 'Helium', uso: 4.0026, kw: 'He', custo: 2 },
-  { qtd: 3, aparelho: 'Lithium', uso: 6.941, kw: 'Li', custo: 2 },
-];
-
-const eletrodomestico = new Eletrodomestico();
-eletrodomestico.nome = 'ar condicionado';
-eletrodomestico.potencia = 220;
-eletrodomestico.quantidade = 1;
-eletrodomestico.tempoDeUso = 8;
+const ar = new Eletrodomestico(1, 'http://localhost:4566/s3localstack/media/1644618162600_telefone.png', 'ar condicionado', 3, 2, 750);
+const tv = new Eletrodomestico(2, 'http://localhost:4566/s3localstack/media/1644618162600_telefone.png', 'tv', 2, 2, 220);
+const som = new Eletrodomestico(3, 'http://localhost:4566/s3localstack/media/1644618162600_telefone.png', 'som', 1, 2, 110);
+const telefone = new Eletrodomestico(4, 'http://localhost:4566/s3localstack/media/1644618162600_telefone.png', 'telefone', 1, 2, 220);
 
 @Component({
   selector: 'elp-quarto',
@@ -28,6 +23,8 @@ eletrodomestico.tempoDeUso = 8;
   styleUrls: ['./quarto.component.scss'],
 })
 export class QuartoComponent implements OnInit {
+  eletrodomesticos!: Eletrodomestico[];
+
   displayedColumns: string[] = [
     'qtd',
     'aparelho',
@@ -36,12 +33,28 @@ export class QuartoComponent implements OnInit {
     'custo',
     'acoes',
   ];
-  dataSource = ELEMENT_DATA;
 
-  constructor(private localStorageService: LocalStorageService) {}
+  dataSource: any = [];
+
+  carouselValue: Eletrodomestico[] = [];
+
+  constructor(
+    private localStorageService: LocalStorageService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
-    console.log(this.localStorageService.getAll());
-    
+    this.localStorageService.set('ar', ar);
+    this.localStorageService.set('tv', tv);
+    this.localStorageService.set('som', som);
+    this.localStorageService.set('telefone', telefone);
+
+    this.carouselValue = this.localStorageService.getAll();
+
+    console.log('carousel', this.carouselValue);
+  }
+
+  openDialog() {
+    this.dialog.open(DialogAddComponent);
   }
 }
