@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeModule, QuartoModule } from "./page";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogAddModule } from './component/dialog-add';
+import { DialogResultModule } from './component/dialog-result/dialog-result.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { DialogAddModule } from './component/dialog-add';
     HomeModule,
     QuartoModule,
     DialogAddModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DialogResultModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,32 @@
+div {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+
+  section:first-child {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      h2 {
+        font-size: 18px;
+      }
+
+      p {
+        font-size: 12px;
+      }
+    }
+  }
+
+  section:last-child {
+    width: 100%;
+    position: relative;
+
+    mat-icon {
+        position: absolute;
+        right: 0;
+    }
+  }
+}

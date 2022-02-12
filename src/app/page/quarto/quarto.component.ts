@@ -3,6 +3,7 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { Eletrodomestico } from 'src/models/eletrodomestico.model';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddComponent } from 'src/app/component/dialog-add/dialog-add.component';
+import { DialogResultComponent } from 'src/app/component/dialog-result/dialog-result.component';
 
 export interface PeriodicElement {
   qtd: number;
@@ -56,5 +57,9 @@ export class QuartoComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(DialogAddComponent);
+  }
+
+  openDialogResult() {
+    this.dialog.open(DialogResultComponent);
   }
 }
