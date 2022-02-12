@@ -12,7 +12,10 @@
       </ul>
     </div>
 
-    <mat-icon (click)="openDialog()">add</mat-icon>
+    <button class="mb-4" (click)="openDialog()">
+      Adc. Eletrodoméstico
+      <mat-icon>add</mat-icon>
+    </button>
 
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <!-- Position Column -->
@@ -47,11 +50,9 @@
       <ng-container matColumnDef="acoes">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
-          <button
-            (click)="deleteEletro('quartos-consumer', element.id)"
+          <mat-icon (click)="deleteEletro('quartos-consumer', element.id)"
+            >close</mat-icon
           >
-            <mat-icon>close</mat-icon>
-          </button>
         </td>
       </ng-container>
 
