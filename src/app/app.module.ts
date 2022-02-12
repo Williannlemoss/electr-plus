@@ -7,6 +7,7 @@ import { HomeModule, QuartoModule } from "./page";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogAddModule } from './component/dialog-add';
 import { DialogResultModule } from './component/dialog-result/dialog-result.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,7 +21,9 @@ import { DialogResultModule } from './component/dialog-result/dialog-result.modu
     QuartoModule,
     DialogAddModule,
     BrowserAnimationsModule,
-    DialogResultModule
+    DialogResultModule,
+    FormsModule, 
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,17 +1,43 @@
 <main>
-  <mat-icon>close</mat-icon>
+  <mat-icon mat-dialog-close>close</mat-icon>
 
-  <div></div>
+  <div class="square"></div>
 
-  <span>Nome do aparelho</span>
-  <span>Ex: Televisão</span>
+  <div class="form-content">
+    <mat-form-field appearance="outline">
+      <mat-label>Nome do Aparelho</mat-label>
+      <input matInput placeholder="Ex: Televisão" />
+    </mat-form-field>
 
-  <span>Quantidade</span>
-  <span>Ex: 1</span>
+    <mat-form-field appearance="outline">
+      <mat-label>Quantidade</mat-label>
+      <input matInput placeholder="Ex: 1" />
+    </mat-form-field>
 
-  <span>Tempo de Uso</span>
-  <span>Ex: 4</span>
+    <div style="display: flex; justify-content: space-between">
+      <mat-form-field appearance="outline">
+        <mat-label>Tempo de Uso</mat-label>
+        <input matInput placeholder="Ex: 4" />
+      </mat-form-field>
 
-  <span>Potência</span>
-  <span>Ex: 2</span>
+      <mat-form-field appearance="outline">
+        <mat-label>Horas/D</mat-label>
+        <input disabled matInput />
+      </mat-form-field>
+    </div>
+
+    <div style="display: flex; justify-content: space-between">
+      <mat-form-field appearance="outline">
+        <mat-label>Potência</mat-label>
+        <input matInput placeholder="Ex: 2" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>w</mat-label>
+        <input disabled matInput />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <button>Adicionar</button>
 </main>

@@ -4,10 +4,10 @@
   <section></section>
 
   <section>
-    <!-- <mat-icon (click)="openDialog()">add</mat-icon> -->
+    <mat-icon (click)="openDialog()">add</mat-icon>
  
     
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" >
+    <!-- <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" >
       <div class="carousel-inner">
         <div class="carousel-item" *ngFor="let itens of carouselValue; let i = index" [ngClass]="{'active': i == 0}">
           <img src="{{itens.imgUrl}}" class="d-block  w-10" alt="...">
@@ -21,7 +21,7 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
-    </div>
+    </div> -->
 
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <!-- Position Column -->
