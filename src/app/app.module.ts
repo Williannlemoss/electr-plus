@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeModule, QuartoModule } from "./page";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DialogAddComponent } from './component/dialog-add/dialog-add.component';
 import { DialogAddModule } from './component/dialog-add';
 
 

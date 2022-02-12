@@ -8,6 +8,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatCarouselModule } from 'ng-mat-carousel';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 
 @NgModule({
@@ -24,7 +25,9 @@ import { MatCarouselModule } from 'ng-mat-carousel';
         MatTableModule,
         MatIconModule,
         MatDialogModule,
-        MatCarouselModule.forRoot()
+        MatCarouselModule.forRoot(),
+        AppRoutingModule
+        
     ]
 })
 export class QuartoModule { }

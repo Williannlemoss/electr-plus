@@ -4,6 +4,7 @@ import {RouterModule} from "@angular/router";
 
 import { HeaderComponent } from './header.component';
 import {NavbarModule} from "../navbar/navbar.module";
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 
 
@@ -14,7 +15,8 @@ import {NavbarModule} from "../navbar/navbar.module";
     imports: [
         CommonModule,
         RouterModule,
-        NavbarModule
+        NavbarModule,
+        AppRoutingModule
     ],
   exports: [
     HeaderComponent
