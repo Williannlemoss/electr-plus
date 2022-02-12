@@ -2,19 +2,18 @@ main {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
 
-  mat-icon{
+  mat-icon {
     background: #ffd32c;
-      color: #000;
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      outline: 0;
-      border: none;
-      
+    color: #000;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    outline: 0;
+    border: none;
   }
 
   section:first-child {
@@ -30,6 +29,30 @@ main {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
+    .container-objects {
+      width: 90%;
+      margin-bottom: 75px;
+    }
+
+    .ul-eletro-objects {
+      display: flex;
+      list-style-type: none;
+
+      margin: 20px 0;
+
+      li {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+
+    .ul-eletro-objects li img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+    }
 
     table {
       width: 90%;

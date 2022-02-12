@@ -5,18 +5,18 @@ export class Eletrodomestico {
 
   nome?: string;
 
-  quantidade?: number;
+  qtd?: number;
 
-  tempoDeUso?: number;
+  uso?: number;
 
   potencia?: number;
 
-  constructor(id?: number,  imgUrl?: string, nome?: string, quantidade?: number, tempoDeUso?: number, potencia?: number){
+  constructor(id?: number,  imgUrl?: string, nome?: string, qtd?: number, uso?: number, potencia?: number){
     this.id = id;
     this.imgUrl = imgUrl;
     this.nome = nome;
-    this.quantidade = quantidade;
-    this.tempoDeUso = tempoDeUso;
+    this.qtd = qtd;
+    this.uso = uso;
     this.potencia = potencia;
   }
 }

@@ -4,6 +4,7 @@ import { Eletrodomestico } from 'src/models/eletrodomestico.model';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddComponent } from 'src/app/component/dialog-add/dialog-add.component';
 import { DialogResultComponent } from 'src/app/component/dialog-result/dialog-result.component';
+import { EletrodomesticoSimulado } from 'src/models/eletro-simulado.model';
 
 export interface PeriodicElement {
   qtd: number;
@@ -13,10 +14,41 @@ export interface PeriodicElement {
   custo: number;
 }
 
-const ar = new Eletrodomestico(1, 'http://localhost:4566/s3localstack/media/1644618162600_telefone.png', 'ar condicionado', 3, 2, 750);
-const tv = new Eletrodomestico(2, 'http://localhost:4566/s3localstack/media/1644618162600_telefone.png', 'tv', 2, 2, 220);
-const som = new Eletrodomestico(3, 'http://localhost:4566/s3localstack/media/1644618162600_telefone.png', 'som', 1, 2, 110);
-const telefone = new Eletrodomestico(4, 'http://localhost:4566/s3localstack/media/1644618162600_telefone.png', 'telefone', 1, 2, 220);
+const quarto: Eletrodomestico[] = [];
+const ar = new Eletrodomestico(
+  1,
+  'http://localhost:4566/s3localstack/media/1644691292349_tv.png',
+  'tv',
+  3,
+  2,
+  750
+);
+const tv = new Eletrodomestico(
+  2,
+  'http://localhost:4566/s3localstack/media/1644691283815_dvd.png',
+  'dvd',
+  2,
+  2,
+  220
+);
+const som = new Eletrodomestico(
+  3,
+  'http://localhost:4566/s3localstack/media/1644691276630_notebook.png',
+  'notebook',
+  1,
+  2,
+  110
+);
+const telefone = new Eletrodomestico(
+  4,
+  'http://localhost:4566/s3localstack/media/1644691262571_telefone.png',
+  'telefone',
+  1,
+  2,
+  220
+);
+
+quarto.push(ar, tv, som, telefone);
 
 @Component({
   selector: 'elp-quarto',
@@ -35,9 +67,9 @@ export class QuartoComponent implements OnInit {
     'acoes',
   ];
 
-  dataSource: any = [];
+  dataSource: EletrodomesticoSimulado[] = [];
 
-  carouselValue: Eletrodomestico[] = [];
+  carouselValue: any = [];
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -45,15 +77,13 @@ export class QuartoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.localStorageService.set('ar', ar);
-    this.localStorageService.set('tv', tv);
-    this.localStorageService.set('som', som);
-    this.localStorageService.set('telefone', telefone);
+    this.localStorageService.set('quartos', quarto);
 
-    this.carouselValue = this.localStorageService.getAll();
+    this.carouselValue = this.localStorageService.getEletrodomestico("quartos")
+    this.dataSource = this.localStorageService.getEletrodomesticoConsumer("quartos-consumer")
 
-    console.log('carousel', this.carouselValue);
-  }
+    this.localStorageService.getEletrodomesticoConsumerQuarto
+    }
 
   openDialog() {
     this.dialog.open(DialogAddComponent);
@@ -61,5 +91,20 @@ export class QuartoComponent implements OnInit {
 
   openDialogResult() {
     this.dialog.open(DialogResultComponent);
+  }
+
+  deleteEletro(key: string, id: number){
+    let consumer = this.localStorageService.getEletrodomesticoConsumer(key);
+    let index = 0;
+
+    consumer.map((cons: EletrodomesticoSimulado) => {
+      if(cons.id === id){
+        consumer.splice(index, 1)
+      } else{
+        index++
+      }
+    })
+
+    this.localStorageService.set(key, consumer);
   }
 }
