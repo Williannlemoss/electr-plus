@@ -7,7 +7,7 @@
     <div class="container-objects">
       <ul class="ul-eletro-objects">
         <li *ngFor="let eletro of carouselValue">
-          <img src="{{ eletro.imgUrl }}" alt="eletronico" />
+          <img src="{{ eletro.imgUrl }}" alt="eletronico" (click)="openDialog()"/>
         </li>
       </ul>
     </div>
