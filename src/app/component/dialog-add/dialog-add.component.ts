@@ -15,7 +15,8 @@ export class DialogAddComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
   ngOnInit(): void {
@@ -29,7 +30,7 @@ export class DialogAddComponent implements OnInit {
     
   }
 
-  salvarEletrodomestico(key: string) {
-    this.localStorageService.saveConsumer(key, this.registerForm.value);
+  salvarEletrodomestico() {
+    this.localStorageService.saveConsumer(this.data, this.registerForm.value);
   }
 }

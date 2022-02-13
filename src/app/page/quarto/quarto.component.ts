@@ -18,38 +18,47 @@ export interface PeriodicElement {
 const quarto: Eletrodomestico[] = [];
 const ar = new Eletrodomestico(
   1,
-  'https://electrplus.s3.us-west-2.amazonaws.com/tv.png',
-  'tv',
-  3,
-  2,
-  750
+  'https://electrplus.s3.us-west-2.amazonaws.com/quarto/ar-cond.png',
+  'Ar Condicionado',
+  1,
+  7,
+  950
 );
 const tv = new Eletrodomestico(
   2,
-  'https://electrplus.s3.us-west-2.amazonaws.com/tv.png',
-  'dvd',
-  2,
-  2,
-  220
+  'https://electrplus.s3.us-west-2.amazonaws.com/quarto/tv-certa.png',
+  'Televisão',
+  1,
+  6,
+  150
 );
-const som = new Eletrodomestico(
+const luz = new Eletrodomestico(
   3,
-  'https://electrplus.s3.us-west-2.amazonaws.com/tv.png',
-  'notebook',
+  'https://electrplus.s3.us-west-2.amazonaws.com/quarto/luminaria.png',
+  'Iluminação',
   1,
-  2,
-  110
+  12,
+  75
 );
-const telefone = new Eletrodomestico(
+const ventilador = new Eletrodomestico(
   4,
-  'https://electrplus.s3.us-west-2.amazonaws.com/tv.png',
-  'telefone',
+  'https://electrplus.s3.us-west-2.amazonaws.com/quarto/ventilador.png',
+  'Ventilador',
   1,
-  2,
-  220
+  10,
+  150
 );
 
-quarto.push(ar, tv, som, telefone);
+const computador = new Eletrodomestico(
+  5,
+  'https://electrplus.s3.us-west-2.amazonaws.com/quarto/notebook.png',
+  'Computador',
+  1,
+  8,
+  50
+);
+
+quarto.push(ar, tv, luz, ventilador, computador);
 
 @Component({
   selector: 'elp-quarto',
@@ -78,10 +87,10 @@ export class QuartoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.localStorageService.set('quartos', quarto);
+    this.localStorageService.set('quarto', quarto);
 
-    this.carouselValue = this.localStorageService.getEletrodomestico("quartos")
-    this.dataSource = this.localStorageService.getEletrodomesticoConsumer("quartos-consumer")
+    this.carouselValue = this.localStorageService.getEletrodomestico("quarto")
+    this.dataSource = this.localStorageService.getEletrodomesticoConsumer("quarto-consumer")
 
     this.localStorageService.getEletrodomesticoConsumerQuarto
     }
@@ -93,7 +102,9 @@ export class QuartoComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(DialogAddComponent);
+    this.dialog.open(DialogAddComponent, {
+      data: "quarto-consumer"
+    });
   }
 
   openDialogResult() {

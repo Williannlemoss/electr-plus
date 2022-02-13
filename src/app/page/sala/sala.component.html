@@ -1,1 +1,91 @@
-<p>sala works!</p>
+<elp-header [title]="'Sala'"></elp-header>
+
+<main>
+  <section></section>
+
+  <section>
+    <div class="container-objects">
+      <ul class="ul-eletro-objects">
+        <li *ngFor="let eletro of carouselValue">
+          <img
+            src="{{ eletro.imgUrl }}"
+            alt="eletronico"
+            (click)="openDialogWithValue(eletro)"
+          />
+        </li>
+      </ul>
+
+      <button class="mb-4" (click)="openDialog()">
+        Adc. Eletrodoméstico
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Position Column -->
+      <ng-container matColumnDef="qtd">
+        <th mat-header-cell *matHeaderCellDef>Qtd</th>
+        <td mat-cell *matCellDef="let element">{{ element.qtd }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="aparelho">
+        <th mat-header-cell *matHeaderCellDef>Aparelho</th>
+        <td mat-cell *matCellDef="let element">{{ element.aparelho }}</td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="uso">
+        <th mat-header-cell *matHeaderCellDef>Uso/Dia</th>
+        <td mat-cell *matCellDef="let element">{{ element.uso }}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="kw">
+        <th mat-header-cell *matHeaderCellDef>KW/Mês</th>
+        <td mat-cell *matCellDef="let element">{{ element.kw }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="custo">
+        <th mat-header-cell *matHeaderCellDef>Custo/Mês</th>
+        <td mat-cell *matCellDef="let element">{{ element.custo }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="acoes">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <mat-icon (click)="deleteEletro('sala-consumer', element.id)"
+            >close</mat-icon
+          >
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <div class="info">
+      <h2>Total do Cômodo</h2>
+      <div class="info-content">
+        <div>
+          <h3>Custo</h3>
+          <h4>84,22KW</h4>
+        </div>
+
+        <div>
+          <h3>Consumo Mensal</h3>
+          <h4>R$231,35</h4>
+        </div>
+
+        <div>
+          <h3>Tarifa</h3>
+          <h4>R$0,82701</h4>
+        </div>
+      </div>
+
+      <button class="geral" (click)="openDialogResult()">
+        Resultado geral
+      </button>
+    </div>
+  </section>
+</main>

@@ -32,7 +32,7 @@ export class DialogEletroComponent implements OnInit, OnChanges {
     });
   }
 
-  salvarEletrodomestico(key: string) {
-    this.localStorageService.saveConsumer(key, this.registerForm.value);
+  salvarEletrodomestico() {
+    this.localStorageService.saveConsumer(this.data, this.registerForm.value);
   }
 }

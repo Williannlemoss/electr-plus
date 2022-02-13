@@ -40,7 +40,22 @@ export class LocalStorageService {
   }
 
   get getEletrodomesticoConsumerQuarto(): EletrodomesticoSimulado[] {
-    const stringTudo = this.storage.getItem('quartos-consumer');
+    const stringTudo = this.storage.getItem('quarto-consumer');
+    return JSON.parse(stringTudo!);
+  }
+
+  get getEletrodomesticoConsumerSala(): EletrodomesticoSimulado[] {
+    const stringTudo = this.storage.getItem('sala-consumer');
+    return JSON.parse(stringTudo!);
+  }
+
+  get getEletrodomesticoConsumerBanheiro(): EletrodomesticoSimulado[] {
+    const stringTudo = this.storage.getItem('banheiro-consumer');
+    return JSON.parse(stringTudo!);
+  }
+
+  get getEletrodomesticoConsumerCozinha(): EletrodomesticoSimulado[] {
+    const stringTudo = this.storage.getItem('cozinha-consumer');
     return JSON.parse(stringTudo!);
   }
 
