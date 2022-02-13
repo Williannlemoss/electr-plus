@@ -1,0 +1,1 @@
+export * from './cozinha.module'

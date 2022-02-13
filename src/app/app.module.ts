@@ -9,6 +9,9 @@ import { DialogAddModule } from './component/dialog-add';
 import { DialogResultModule } from './component/dialog-result/dialog-result.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DialogEletroModule } from './component/dialog-eletro';
+import { SalaModule } from './page/sala';
+import { CozinhaModule } from './page/cozinha';
+import { BanheiroModule } from './page/banheiro';
 
 
 @NgModule({
@@ -25,7 +28,10 @@ import { DialogEletroModule } from './component/dialog-eletro';
     DialogResultModule,
     FormsModule, 
     ReactiveFormsModule,
-    DialogEletroModule
+    DialogEletroModule,
+    SalaModule,
+    CozinhaModule,
+    BanheiroModule
   ],
   providers: [],
   bootstrap: [AppComponent]
