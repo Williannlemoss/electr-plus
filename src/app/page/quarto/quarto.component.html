@@ -7,15 +7,19 @@
     <div class="container-objects">
       <ul class="ul-eletro-objects">
         <li *ngFor="let eletro of carouselValue">
-          <img src="{{ eletro.imgUrl }}" alt="eletronico" (click)="openDialog()"/>
+          <img
+            src="{{ eletro.imgUrl }}"
+            alt="eletronico"
+            (click)="openDialogWithValue(eletro)"
+          />
         </li>
       </ul>
-    </div>
 
-    <button class="mb-4" (click)="openDialog()">
-      Adc. Eletrodoméstico
-      <mat-icon>add</mat-icon>
-    </button>
+      <button class="mb-4" (click)="openDialog()">
+        Adc. Eletrodoméstico
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
 
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <!-- Position Column -->
@@ -61,22 +65,16 @@
     </table>
 
     <div class="info">
-      <h2>Total do Cômodo</h2>
-
+      
       <div class="info-content">
         <div>
-          <h3>Eletrodoméstico</h3>
-          <h4>Televisão, Iluminação, Ar condicionado</h4>
-        </div>
-
-        <div>
-          <h3>Consumo</h3>
-          <h4>231,35 kWh</h4>
-        </div>
-
-        <div>
           <h3>Custo</h3>
-          <h4>R$194,15</h4>
+          <h4>84,22KW</h4>
+        </div>
+
+        <div>
+          <h3>Consumo Mensal</h3>
+          <h4>R$231,35</h4>
         </div>
 
         <div>
@@ -84,8 +82,10 @@
           <h4>R$0,82701</h4>
         </div>
       </div>
-    </div>
 
-    <button class="geral" (click)="openDialogResult()">Resultado geral</button>
+      <button class="geral" (click)="openDialogResult()">
+        Resultado geral
+      </button>
+    </div>
   </section>
 </main>

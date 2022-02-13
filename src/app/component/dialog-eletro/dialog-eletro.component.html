@@ -7,18 +7,18 @@
     <form [formGroup]="registerForm">
       <mat-form-field appearance="outline">
         <mat-label>Nome do Aparelho</mat-label>
-        <input matInput placeholder="Ex: Televisão" formControlName="nome" />
+        <input type="text" matInput formControlName="nome"/>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Quantidade</mat-label>
-        <input matInput placeholder="Ex: 1" formControlName="qtd" />
+        <input type="text" matInput formControlName="qtd"/>
       </mat-form-field>
 
       <div style="display: flex; justify-content: space-between">
         <mat-form-field appearance="outline">
           <mat-label>Tempo de Uso</mat-label>
-          <input matInput placeholder="Ex: 4" formControlName="uso" />
+          <input type="text" matInput formControlName="uso"/>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
@@ -30,7 +30,7 @@
       <div style="display: flex; justify-content: space-between">
         <mat-form-field appearance="outline">
           <mat-label>Potência</mat-label>
-          <input matInput placeholder="Ex: 2" formControlName="potencia" />
+          <input type="text" matInput formControlName="potencia"/>
         </mat-form-field>
 
         <mat-form-field appearance="outline">

@@ -1,0 +1,54 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 400px;
+    height: 100%;
+  
+    mat-icon {
+      position: absolute;
+      right: 0;
+      top: 5px;
+      cursor: pointer;
+    }
+  
+    .square {
+      text-align: center;
+      margin: 10px;
+      color: white;
+      background-color: #C4C4C4;
+      width: 100px;
+      height: 100px;
+    }
+  
+    .form-content {
+      mat-form-field {
+        width: 100%;
+      }
+  
+      div mat-form-field {
+      }
+  
+      div mat-form-field:first-child {
+        width: 73%;
+      }
+  
+      div mat-form-field:last-child {
+        width: 25%;
+      }
+    }
+  
+    button{
+      border: none;
+      border-radius: 8px;
+      outline: 0;
+      cursor: pointer;
+      width: 200px;
+      height: 40px;
+      background: #C4C4C4;
+      font-weight: 500;
+    }
+  }
+  

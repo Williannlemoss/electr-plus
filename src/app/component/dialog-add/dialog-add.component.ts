@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Eletrodomestico } from 'src/models/eletrodomestico.model';
 
 @Component({
   selector: 'elp-dialog-add',
@@ -9,6 +11,7 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 })
 export class DialogAddComponent implements OnInit {
   public registerForm!: FormGroup;
+  
 
   constructor(
     private formBuilder: FormBuilder,
@@ -22,6 +25,8 @@ export class DialogAddComponent implements OnInit {
       uso: ['', [Validators.required]],
       potencia: ['', [Validators.required]],
     });
+
+    
   }
 
   salvarEletrodomestico(key: string) {

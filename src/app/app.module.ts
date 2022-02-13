@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogAddModule } from './component/dialog-add';
 import { DialogResultModule } from './component/dialog-result/dialog-result.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DialogEletroModule } from './component/dialog-eletro';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     DialogResultModule,
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DialogEletroModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogAddComponent } from 'src/app/component/dialog-add/dialog-add.component';
 import { DialogResultComponent } from 'src/app/component/dialog-result/dialog-result.component';
 import { EletrodomesticoSimulado } from 'src/models/eletro-simulado.model';
+import { DialogEletroComponent } from 'src/app/component/dialog-eletro/dialog-eletro.component';
 
 export interface PeriodicElement {
   qtd: number;
@@ -17,7 +18,7 @@ export interface PeriodicElement {
 const quarto: Eletrodomestico[] = [];
 const ar = new Eletrodomestico(
   1,
-  'http://localhost:4566/s3localstack/media/1644691292349_tv.png',
+  'https://electrplus.s3.us-west-2.amazonaws.com/tv.png',
   'tv',
   3,
   2,
@@ -25,7 +26,7 @@ const ar = new Eletrodomestico(
 );
 const tv = new Eletrodomestico(
   2,
-  'http://localhost:4566/s3localstack/media/1644691283815_dvd.png',
+  'https://electrplus.s3.us-west-2.amazonaws.com/tv.png',
   'dvd',
   2,
   2,
@@ -33,7 +34,7 @@ const tv = new Eletrodomestico(
 );
 const som = new Eletrodomestico(
   3,
-  'http://localhost:4566/s3localstack/media/1644691276630_notebook.png',
+  'https://electrplus.s3.us-west-2.amazonaws.com/tv.png',
   'notebook',
   1,
   2,
@@ -41,7 +42,7 @@ const som = new Eletrodomestico(
 );
 const telefone = new Eletrodomestico(
   4,
-  'http://localhost:4566/s3localstack/media/1644691262571_telefone.png',
+  'https://electrplus.s3.us-west-2.amazonaws.com/tv.png',
   'telefone',
   1,
   2,
@@ -84,6 +85,12 @@ export class QuartoComponent implements OnInit {
 
     this.localStorageService.getEletrodomesticoConsumerQuarto
     }
+
+  openDialogWithValue(eletro: Eletrodomestico) {
+    this.dialog.open(DialogEletroComponent, {
+      data: {eletro}
+    });
+  }
 
   openDialog() {
     this.dialog.open(DialogAddComponent);

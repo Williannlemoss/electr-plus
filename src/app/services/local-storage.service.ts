@@ -53,8 +53,8 @@ export class LocalStorageService {
 
     eletrodomesticoToSaved.aparelho = eletrodometico.nome!;
     eletrodomesticoToSaved.qtd = eletrodometico.qtd!;
-    eletrodomesticoToSaved.uso = eletrodometico.uso! * eletrodometico.qtd!;
-    eletrodomesticoToSaved.kw = eletrodometico.uso! * eletrodometico.qtd! * 30;
+    eletrodomesticoToSaved.uso = eletrodometico.uso!;
+    eletrodomesticoToSaved.kw = eletrodometico.potencia! *eletrodometico.uso! * eletrodometico.qtd! * 30;
     eletrodomesticoToSaved.custo =
       (eletrodometico.uso! *
         eletrodometico.qtd! *
