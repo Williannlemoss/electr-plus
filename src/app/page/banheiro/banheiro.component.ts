@@ -85,18 +85,23 @@ export class BanheiroComponent implements OnInit {
     this.dataSource =
       this.localStorageService.getEletrodomesticoConsumer('banheiro-consumer');
 
-    this.localStorageService.getEletrodomesticoConsumerQuarto;
   }
 
   openDialogWithValue(eletro: Eletrodomestico) {
     this.dialog.open(DialogEletroComponent, {
       data: { eletro },
+    }).afterClosed().subscribe((res)=> {
+      this.dataSource =
+      this.localStorageService.getEletrodomesticoConsumer('banheiro-consumer');
     });
   }
 
   openDialog() {
     this.dialog.open(DialogAddComponent, {
       data: 'banheiro-consumer',
+    }).afterClosed().subscribe((res)=> {
+      this.dataSource =
+      this.localStorageService.getEletrodomesticoConsumer('banheiro-consumer');
     });
   }
 
@@ -117,5 +122,7 @@ export class BanheiroComponent implements OnInit {
     });
 
     this.localStorageService.set(key, consumer);
+    this.dataSource =
+    this.localStorageService.getEletrodomesticoConsumer('banheiro-consumer');
   }
 }

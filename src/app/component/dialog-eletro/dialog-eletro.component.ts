@@ -9,7 +9,7 @@ import { Eletrodomestico } from 'src/models/eletrodomestico.model';
   templateUrl: './dialog-eletro.component.html',
   styleUrls: ['./dialog-eletro.component.scss'],
 })
-export class DialogEletroComponent implements OnInit, OnChanges {
+export class DialogEletroComponent implements OnInit {
   public eletro!: Eletrodomestico;
   public registerForm!: FormGroup;
 
@@ -21,9 +21,7 @@ export class DialogEletroComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.eletro = this.data.eletro;
-  }
 
-  ngOnChanges(): void {
     this.registerForm = this.formBuilder.group({
       nome: [this.data.eletro.nome],
       qtd: [this.data.eletro.qtd],
@@ -33,6 +31,6 @@ export class DialogEletroComponent implements OnInit, OnChanges {
   }
 
   salvarEletrodomestico() {
-    this.localStorageService.saveConsumer(this.data, this.registerForm.value);
+    this.localStorageService.saveConsumer("quarto-consumer", this.registerForm.value);
   }
 }

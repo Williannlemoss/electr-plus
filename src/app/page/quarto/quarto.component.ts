@@ -89,40 +89,58 @@ export class QuartoComponent implements OnInit {
   ngOnInit(): void {
     this.localStorageService.set('quarto', quarto);
 
-    this.carouselValue = this.localStorageService.getEletrodomestico("quarto")
-    this.dataSource = this.localStorageService.getEletrodomesticoConsumer("quarto-consumer")
-
-    this.localStorageService.getEletrodomesticoConsumerQuarto
-    }
+    this.carouselValue = this.localStorageService.getEletrodomestico('quarto');
+    this.dataSource =
+      this.localStorageService.getEletrodomesticoConsumer('quarto-consumer');
+  }
 
   openDialogWithValue(eletro: Eletrodomestico) {
-    this.dialog.open(DialogEletroComponent, {
-      data: {eletro}
-    });
+    this.dialog
+      .open(DialogEletroComponent, {
+        data: { eletro },
+      })
+      .afterClosed()
+      .subscribe((res) => {
+        this.dataSource =
+          this.localStorageService.getEletrodomesticoConsumer(
+            'quarto-consumer'
+          );
+      });
   }
 
   openDialog() {
-    this.dialog.open(DialogAddComponent, {
-      data: "quarto-consumer"
-    });
+    this.dialog
+      .open(DialogAddComponent, {
+        data: 'quarto-consumer',
+      })
+      .afterClosed()
+      .subscribe((res) => {
+        this.dataSource =
+          this.localStorageService.getEletrodomesticoConsumer(
+            'quarto-consumer'
+          );
+      });
   }
 
   openDialogResult() {
     this.dialog.open(DialogResultComponent);
   }
 
-  deleteEletro(key: string, id: number){
+  deleteEletro(key: string, id: number) {
     let consumer = this.localStorageService.getEletrodomesticoConsumer(key);
     let index = 0;
 
     consumer.map((cons: EletrodomesticoSimulado) => {
-      if(cons.id === id){
-        consumer.splice(index, 1)
-      } else{
-        index++
+      if (cons.id === id) {
+        consumer.splice(index, 1);
+      } else {
+        index++;
       }
-    })
+    });
 
     this.localStorageService.set(key, consumer);
+
+    this.dataSource =
+      this.localStorageService.getEletrodomesticoConsumer('quarto-consumer');
   }
 }

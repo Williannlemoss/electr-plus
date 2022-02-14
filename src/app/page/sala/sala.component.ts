@@ -94,18 +94,24 @@ export class SalaComponent implements OnInit {
     this.dataSource =
       this.localStorageService.getEletrodomesticoConsumer('sala-consumer');
 
-    this.localStorageService.getEletrodomesticoConsumerQuarto;
+  
   }
 
   openDialogWithValue(eletro: Eletrodomestico) {
     this.dialog.open(DialogEletroComponent, {
       data: { eletro },
+    }).afterClosed().subscribe((res)=> {
+      this.dataSource =
+      this.localStorageService.getEletrodomesticoConsumer('sala-consumer');
     });
   }
 
   openDialog() {
     this.dialog.open(DialogAddComponent, {
       data: 'sala-consumer',
+    }).afterClosed().subscribe((res)=>{
+      this.dataSource =
+      this.localStorageService.getEletrodomesticoConsumer('sala-consumer');
     });
   }
 
@@ -126,5 +132,7 @@ export class SalaComponent implements OnInit {
     });
 
     this.localStorageService.set(key, consumer);
+    this.dataSource =
+      this.localStorageService.getEletrodomesticoConsumer('sala-consumer');
   }
 }

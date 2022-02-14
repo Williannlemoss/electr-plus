@@ -88,7 +88,6 @@ export class CozinhaComponent implements OnInit {
     this.carouselValue = this.localStorageService.getEletrodomestico("cozinha")
     this.dataSource = this.localStorageService.getEletrodomesticoConsumer("cozinha-consumer")
 
-    this.localStorageService.getEletrodomesticoConsumerQuarto
     }
 
   openDialogWithValue(eletro: Eletrodomestico) {
@@ -100,6 +99,8 @@ export class CozinhaComponent implements OnInit {
   openDialog() {
     this.dialog.open(DialogAddComponent, {
       data: "cozinha-consumer"
+    }).afterClosed().subscribe((res)=> {
+      this.dataSource = this.localStorageService.getEletrodomesticoConsumer("cozinha-consumer")
     });
   }
 
@@ -120,6 +121,7 @@ export class CozinhaComponent implements OnInit {
     })
 
     this.localStorageService.set(key, consumer);
+    this.dataSource = this.localStorageService.getEletrodomesticoConsumer("cozinha-consumer")
   }
 
 }

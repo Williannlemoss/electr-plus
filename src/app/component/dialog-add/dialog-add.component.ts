@@ -26,8 +26,6 @@ export class DialogAddComponent implements OnInit {
       uso: ['', [Validators.required]],
       potencia: ['', [Validators.required]],
     });
-
-    
   }
 
   salvarEletrodomestico() {
