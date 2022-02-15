@@ -20,17 +20,17 @@ export class DialogEletroComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.eletro = this.data.eletro;
+    this.eletro = this.data[0];
 
     this.registerForm = this.formBuilder.group({
-      nome: [this.data.eletro.nome],
-      qtd: [this.data.eletro.qtd],
-      uso: [this.data.eletro.uso],
-      potencia: [this.data.eletro.potencia],
+      nome: [this.data[0].nome],
+      qtd: [this.data[0].qtd],
+      uso: [this.data[0].uso],
+      potencia: [this.data[0].potencia],
     });
   }
 
   salvarEletrodomestico() {
-    this.localStorageService.saveConsumer("quarto-consumer", this.registerForm.value);
+    this.localStorageService.saveConsumer(this.data[1], this.registerForm.value);
   }
 }

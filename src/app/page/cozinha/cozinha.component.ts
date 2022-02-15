@@ -58,10 +58,9 @@ cozinha.push(lavadora, fogao, geladeira, cafeteira);
 @Component({
   selector: 'elp-cozinha',
   templateUrl: './cozinha.component.html',
-  styleUrls: ['./cozinha.component.scss']
+  styleUrls: ['./cozinha.component.scss'],
 })
 export class CozinhaComponent implements OnInit {
-
   eletrodomesticos!: Eletrodomestico[];
 
   displayedColumns: string[] = [
@@ -77,6 +76,11 @@ export class CozinhaComponent implements OnInit {
 
   carouselValue: any = [];
 
+  comodo: string = 'cozinha-consumer';
+
+  kwm: number = 0;
+  custo: number = 0;
+
   constructor(
     private localStorageService: LocalStorageService,
     public dialog: MatDialog
@@ -85,43 +89,70 @@ export class CozinhaComponent implements OnInit {
   ngOnInit(): void {
     this.localStorageService.set('cozinha', cozinha);
 
-    this.carouselValue = this.localStorageService.getEletrodomestico("cozinha")
-    this.dataSource = this.localStorageService.getEletrodomesticoConsumer("cozinha-consumer")
-
-    }
+    this.carouselValue = this.localStorageService.getEletrodomestico('cozinha');
+    this.dataSource =
+      this.localStorageService.getEletrodomesticoConsumer('cozinha-consumer');
+  }
 
   openDialogWithValue(eletro: Eletrodomestico) {
-    this.dialog.open(DialogEletroComponent, {
-      data: {eletro}
-    });
+    this.dialog
+      .open(DialogEletroComponent, {
+        data: [eletro, this.comodo],
+      })
+      .afterClosed()
+      .subscribe((res) => {
+        this.dataSource =
+          this.localStorageService.getEletrodomesticoConsumer(
+            'cozinha-consumer'
+          );
+
+        this.calcularCusto();
+      });
   }
 
   openDialog() {
-    this.dialog.open(DialogAddComponent, {
-      data: "cozinha-consumer"
-    }).afterClosed().subscribe((res)=> {
-      this.dataSource = this.localStorageService.getEletrodomesticoConsumer("cozinha-consumer")
-    });
+    this.dialog
+      .open(DialogAddComponent, {
+        data: 'cozinha-consumer',
+      })
+      .afterClosed()
+      .subscribe((res) => {
+        this.dataSource =
+          this.localStorageService.getEletrodomesticoConsumer(
+            'cozinha-consumer'
+          );
+
+        this.calcularCusto();
+      });
   }
 
   openDialogResult() {
     this.dialog.open(DialogResultComponent);
   }
 
-  deleteEletro(key: string, id: number){
+  deleteEletro(key: string, id: number) {
     let consumer = this.localStorageService.getEletrodomesticoConsumer(key);
     let index = 0;
 
     consumer.map((cons: EletrodomesticoSimulado) => {
-      if(cons.id === id){
-        consumer.splice(index, 1)
-      } else{
-        index++
+      if (cons.id === id) {
+        consumer.splice(index, 1);
+      } else {
+        index++;
       }
-    })
+    });
 
     this.localStorageService.set(key, consumer);
-    this.dataSource = this.localStorageService.getEletrodomesticoConsumer("cozinha-consumer")
+    this.dataSource =
+      this.localStorageService.getEletrodomesticoConsumer('cozinha-consumer');
+
+    this.calcularCusto();
   }
 
+  calcularCusto() {
+    this.dataSource.forEach((eletrodomestico: EletrodomesticoSimulado) => {
+      this.kwm = eletrodomestico.kw! + this.kwm;
+      this.custo = eletrodomestico.custo! + this.custo;
+    });
+  }
 }

@@ -82,6 +82,11 @@ export class SalaComponent implements OnInit {
 
   carouselValue: any = [];
 
+  comodo: string = 'sala-consumer';
+
+  kwm: number = 0;
+  custo: number = 0;
+
   constructor(
     private localStorageService: LocalStorageService,
     public dialog: MatDialog
@@ -94,25 +99,31 @@ export class SalaComponent implements OnInit {
     this.dataSource =
       this.localStorageService.getEletrodomesticoConsumer('sala-consumer');
 
-  
+      this.calcularCusto();
   }
 
   openDialogWithValue(eletro: Eletrodomestico) {
-    this.dialog.open(DialogEletroComponent, {
-      data: { eletro },
-    }).afterClosed().subscribe((res)=> {
-      this.dataSource =
-      this.localStorageService.getEletrodomesticoConsumer('sala-consumer');
-    });
+    this.dialog
+      .open(DialogEletroComponent, {
+        data: [eletro, this.comodo],
+      })
+      .afterClosed()
+      .subscribe((res) => {
+        this.dataSource =
+          this.localStorageService.getEletrodomesticoConsumer('sala-consumer');
+      });
   }
 
   openDialog() {
-    this.dialog.open(DialogAddComponent, {
-      data: 'sala-consumer',
-    }).afterClosed().subscribe((res)=>{
-      this.dataSource =
-      this.localStorageService.getEletrodomesticoConsumer('sala-consumer');
-    });
+    this.dialog
+      .open(DialogAddComponent, {
+        data: 'sala-consumer',
+      })
+      .afterClosed()
+      .subscribe((res) => {
+        this.dataSource =
+          this.localStorageService.getEletrodomesticoConsumer('sala-consumer');
+      });
   }
 
   openDialogResult() {
@@ -134,5 +145,11 @@ export class SalaComponent implements OnInit {
     this.localStorageService.set(key, consumer);
     this.dataSource =
       this.localStorageService.getEletrodomesticoConsumer('sala-consumer');
+  }
+  calcularCusto() {
+    this.dataSource.forEach((eletrodomestico: EletrodomesticoSimulado) => {
+      this.kwm = eletrodomestico.kw! + this.kwm;
+      this.custo = eletrodomestico.custo! + this.custo;
+    });
   }
 }

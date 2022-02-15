@@ -72,6 +72,11 @@ export class BanheiroComponent implements OnInit {
 
   carouselValue: any = [];
 
+  comodo: string = 'banheiro-consumer';
+
+  kwm: number = 0;
+  custo: number = 0;
+
   constructor(
     private localStorageService: LocalStorageService,
     public dialog: MatDialog
@@ -85,24 +90,35 @@ export class BanheiroComponent implements OnInit {
     this.dataSource =
       this.localStorageService.getEletrodomesticoConsumer('banheiro-consumer');
 
+      this.calcularCusto();
   }
 
   openDialogWithValue(eletro: Eletrodomestico) {
-    this.dialog.open(DialogEletroComponent, {
-      data: { eletro },
-    }).afterClosed().subscribe((res)=> {
-      this.dataSource =
-      this.localStorageService.getEletrodomesticoConsumer('banheiro-consumer');
-    });
+    this.dialog
+      .open(DialogEletroComponent, {
+        data: [eletro, this.comodo]
+      })
+      .afterClosed()
+      .subscribe((res) => {
+        this.dataSource =
+          this.localStorageService.getEletrodomesticoConsumer(
+            'banheiro-consumer'
+          );
+      });
   }
 
   openDialog() {
-    this.dialog.open(DialogAddComponent, {
-      data: 'banheiro-consumer',
-    }).afterClosed().subscribe((res)=> {
-      this.dataSource =
-      this.localStorageService.getEletrodomesticoConsumer('banheiro-consumer');
-    });
+    this.dialog
+      .open(DialogAddComponent, {
+        data: 'banheiro-consumer',
+      })
+      .afterClosed()
+      .subscribe((res) => {
+        this.dataSource =
+          this.localStorageService.getEletrodomesticoConsumer(
+            'banheiro-consumer'
+          );
+      });
   }
 
   openDialogResult() {
@@ -123,6 +139,13 @@ export class BanheiroComponent implements OnInit {
 
     this.localStorageService.set(key, consumer);
     this.dataSource =
-    this.localStorageService.getEletrodomesticoConsumer('banheiro-consumer');
+      this.localStorageService.getEletrodomesticoConsumer('banheiro-consumer');
+  }
+
+  calcularCusto() {
+    this.dataSource.forEach((eletrodomestico: EletrodomesticoSimulado) => {
+      this.kwm = eletrodomestico.kw! + this.kwm;
+      this.custo = eletrodomestico.custo! + this.custo;
+    });
   }
 }

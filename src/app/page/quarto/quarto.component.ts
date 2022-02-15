@@ -81,6 +81,11 @@ export class QuartoComponent implements OnInit {
 
   carouselValue: any = [];
 
+  comodo: string = 'quarto-consumer';
+
+  kwm: number = 0;
+  custo: number = 0;
+
   constructor(
     private localStorageService: LocalStorageService,
     public dialog: MatDialog
@@ -92,12 +97,14 @@ export class QuartoComponent implements OnInit {
     this.carouselValue = this.localStorageService.getEletrodomestico('quarto');
     this.dataSource =
       this.localStorageService.getEletrodomesticoConsumer('quarto-consumer');
+
+    this.calcularCusto();
   }
 
   openDialogWithValue(eletro: Eletrodomestico) {
     this.dialog
       .open(DialogEletroComponent, {
-        data: { eletro },
+        data: [eletro, this.comodo],
       })
       .afterClosed()
       .subscribe((res) => {
@@ -142,5 +149,12 @@ export class QuartoComponent implements OnInit {
 
     this.dataSource =
       this.localStorageService.getEletrodomesticoConsumer('quarto-consumer');
+  }
+
+  calcularCusto() {
+    this.dataSource.forEach((eletrodomestico: EletrodomesticoSimulado) => {
+      this.kwm = eletrodomestico.kw! + this.kwm;
+      this.custo = eletrodomestico.custo! + this.custo;
+    });
   }
 }
