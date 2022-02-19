@@ -98,6 +98,14 @@ export class SalaComponent implements OnInit {
     this.carouselValue = this.localStorageService.getEletrodomestico('sala');
     this.dataSource =
       this.localStorageService.getEletrodomesticoConsumer('sala-consumer');
+    this.localStorageService.calculate('sala-consumer');
+
+    this.localStorageService.returnTotalCusto.subscribe((res) => {
+      this.custo = res;
+    });
+    this.localStorageService.returnTotalKw.subscribe((res) => {
+      this.kwm = res;
+    });
   }
 
   openDialogWithValue(eletro: Eletrodomestico) {
@@ -143,11 +151,6 @@ export class SalaComponent implements OnInit {
     this.localStorageService.set(key, consumer);
     this.dataSource =
       this.localStorageService.getEletrodomesticoConsumer('sala-consumer');
-  }
-  calcularCusto() {
-    this.dataSource.forEach((eletrodomestico: EletrodomesticoSimulado) => {
-      this.kwm = eletrodomestico.kw! + this.kwm;
-      this.custo = eletrodomestico.custo! + this.custo;
-    });
+    this.localStorageService.calculate('sala-consumer');
   }
 }

@@ -8,6 +8,12 @@ main {
 
   table td {
     text-align: center;
+
+    mat-icon {
+      cursor: pointer;
+      outline: 0;
+      color: #ffd32c;
+    }
   }
 
   button {
@@ -15,16 +21,35 @@ main {
     align-items: center;
     justify-content: center;
 
-    background: #ffd32c;
+    background: #fff;
     color: #000;
     width: 200px;
     height: 45px;
-    border-radius: 15px;
+    border-radius: 5px;
     cursor: pointer;
     outline: 0;
-    border: none;
+    border: 2px solid #000;
     font-size: 14px;
     font-weight: 500;
+  }
+
+  button:hover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #fff;
+    color: #ffd32c;
+    width: 200px;
+    height: 45px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: 0;
+    border: 2px solid #ffd32c;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.3s;
+    opacity: 0.8;
   }
 
   section:first-child {
@@ -105,19 +130,6 @@ main {
           font-size: 14px;
         }
       }
-    }
-
-    .geral {
-      background: #ffd32c;
-      color: #000;
-      width: 200px;
-      height: 45px;
-      border-radius: 15px;
-      cursor: pointer;
-      outline: 0;
-      border: none;
-      font-size: 14px;
-      font-weight: 500;
     }
   }
 }

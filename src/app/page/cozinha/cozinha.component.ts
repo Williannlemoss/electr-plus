@@ -60,7 +60,7 @@ cozinha.push(lavadora, fogao, geladeira, cafeteira);
   templateUrl: './cozinha.component.html',
   styleUrls: ['./cozinha.component.scss'],
 })
-export class CozinhaComponent implements OnInit, OnChanges{
+export class CozinhaComponent implements OnInit, OnChanges {
   eletrodomesticos!: Eletrodomestico[];
 
   displayedColumns: string[] = [
@@ -92,12 +92,18 @@ export class CozinhaComponent implements OnInit, OnChanges{
     this.carouselValue = this.localStorageService.getEletrodomestico('cozinha');
     this.dataSource =
       this.localStorageService.getEletrodomesticoConsumer('cozinha-consumer');
-      this.calcularCusto();
+
+      this.localStorageService.calculate('cozinha-consumer');
+
+    this.localStorageService.returnTotalCusto.subscribe((res) => {
+      this.custo = res;
+    });
+    this.localStorageService.returnTotalKw.subscribe((res) => {
+      this.kwm = res;
+    });
   }
 
-  ngOnChanges(): void {
-    
-  }
+  ngOnChanges(): void {}
 
   openDialogWithValue(eletro: Eletrodomestico) {
     this.dialog
@@ -146,12 +152,6 @@ export class CozinhaComponent implements OnInit, OnChanges{
     this.localStorageService.set(key, consumer);
     this.dataSource =
       this.localStorageService.getEletrodomesticoConsumer('cozinha-consumer');
-  }
-
-  calcularCusto() {
-    this.dataSource.forEach((eletrodomestico: EletrodomesticoSimulado) => {
-      this.kwm = eletrodomestico.kw! + this.kwm;
-      this.custo = eletrodomestico.custo! + this.custo;
-    });
+    this.localStorageService.calculate('cozinha-consumer');
   }
 }

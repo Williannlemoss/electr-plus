@@ -98,7 +98,7 @@ export class QuartoComponent implements OnInit {
     this.dataSource =
       this.localStorageService.getEletrodomesticoConsumer('quarto-consumer');
 
-      this.localStorageService.calculate('quarto-consumer');
+    this.localStorageService.calculate('quarto-consumer');
 
     this.localStorageService.returnTotalCusto.subscribe((res) => {
       this.custo = res;
@@ -156,6 +156,6 @@ export class QuartoComponent implements OnInit {
 
     this.dataSource =
       this.localStorageService.getEletrodomesticoConsumer('quarto-consumer');
-      this.localStorageService.calculate("quarto-consumer");
+    this.localStorageService.calculate('quarto-consumer');
   }
 }

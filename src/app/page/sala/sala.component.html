@@ -16,8 +16,7 @@
       </ul>
 
       <button class="mb-4" (click)="openDialog()">
-        Adc. Eletrodoméstico
-        <mat-icon>add</mat-icon>
+        Novo Eletrodoméstico
       </button>
     </div>
 
@@ -96,7 +95,7 @@
       <div class="info-content">
         <div>
           <h3>Custo</h3>
-          <h4>{{this.kwm}} KW/M</h4>
+          <h4> {{ this.kwm | currency: "Kw/M "}} </h4>
         </div>
 
         <div>
@@ -111,7 +110,7 @@
       </div>
 
       <button class="geral" (click)="openDialogResult()">
-        Resultado geral
+        Finalizar simulação
       </button>
     </div>
   </section>
