@@ -90,13 +90,20 @@ export class BanheiroComponent implements OnInit {
     this.dataSource =
       this.localStorageService.getEletrodomesticoConsumer('banheiro-consumer');
 
-      this.calcularCusto();
+    this.localStorageService.calculate('banheiro-consumer');
+
+    this.localStorageService.returnTotalCusto.subscribe((res) => {
+      this.custo = res;
+    });
+    this.localStorageService.returnTotalKw.subscribe((res) => {
+      this.kwm = res;
+    });
   }
 
   openDialogWithValue(eletro: Eletrodomestico) {
     this.dialog
       .open(DialogEletroComponent, {
-        data: [eletro, this.comodo]
+        data: [eletro, this.comodo],
       })
       .afterClosed()
       .subscribe((res) => {
@@ -140,12 +147,6 @@ export class BanheiroComponent implements OnInit {
     this.localStorageService.set(key, consumer);
     this.dataSource =
       this.localStorageService.getEletrodomesticoConsumer('banheiro-consumer');
-  }
-
-  calcularCusto() {
-    this.dataSource.forEach((eletrodomestico: EletrodomesticoSimulado) => {
-      this.kwm = eletrodomestico.kw! + this.kwm;
-      this.custo = eletrodomestico.custo! + this.custo;
-    });
+      this.localStorageService.calculate("banheiro-consumer");
   }
 }

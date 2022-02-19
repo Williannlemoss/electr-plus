@@ -98,8 +98,6 @@ export class SalaComponent implements OnInit {
     this.carouselValue = this.localStorageService.getEletrodomestico('sala');
     this.dataSource =
       this.localStorageService.getEletrodomesticoConsumer('sala-consumer');
-
-      this.calcularCusto();
   }
 
   openDialogWithValue(eletro: Eletrodomestico) {

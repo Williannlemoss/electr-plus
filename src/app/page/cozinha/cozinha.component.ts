@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddComponent } from 'src/app/component/dialog-add/dialog-add.component';
 import { DialogEletroComponent } from 'src/app/component/dialog-eletro/dialog-eletro.component';
@@ -60,7 +60,7 @@ cozinha.push(lavadora, fogao, geladeira, cafeteira);
   templateUrl: './cozinha.component.html',
   styleUrls: ['./cozinha.component.scss'],
 })
-export class CozinhaComponent implements OnInit {
+export class CozinhaComponent implements OnInit, OnChanges{
   eletrodomesticos!: Eletrodomestico[];
 
   displayedColumns: string[] = [
@@ -92,6 +92,11 @@ export class CozinhaComponent implements OnInit {
     this.carouselValue = this.localStorageService.getEletrodomestico('cozinha');
     this.dataSource =
       this.localStorageService.getEletrodomesticoConsumer('cozinha-consumer');
+      this.calcularCusto();
+  }
+
+  ngOnChanges(): void {
+    
   }
 
   openDialogWithValue(eletro: Eletrodomestico) {
@@ -105,8 +110,6 @@ export class CozinhaComponent implements OnInit {
           this.localStorageService.getEletrodomesticoConsumer(
             'cozinha-consumer'
           );
-
-        this.calcularCusto();
       });
   }
 
@@ -121,8 +124,6 @@ export class CozinhaComponent implements OnInit {
           this.localStorageService.getEletrodomesticoConsumer(
             'cozinha-consumer'
           );
-
-        this.calcularCusto();
       });
   }
 
@@ -145,8 +146,6 @@ export class CozinhaComponent implements OnInit {
     this.localStorageService.set(key, consumer);
     this.dataSource =
       this.localStorageService.getEletrodomesticoConsumer('cozinha-consumer');
-
-    this.calcularCusto();
   }
 
   calcularCusto() {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subscriber } from 'rxjs';
 import { EletrodomesticoSimulado } from 'src/models/eletro-simulado.model';
 import { Eletrodomestico } from 'src/models/eletrodomestico.model';
 
@@ -8,9 +8,33 @@ import { Eletrodomestico } from 'src/models/eletrodomestico.model';
 })
 export class LocalStorageService {
   private storage: Storage;
+  private totalKw: BehaviorSubject<number> = new BehaviorSubject(0);
+  private totalCusto: BehaviorSubject<number> = new BehaviorSubject(0);
+
+  get returnTotalKw(): Observable<number> {
+    return this.totalKw.asObservable();
+  }
+
+  get returnTotalCusto(): Observable<number> {
+    return this.totalCusto.asObservable();
+  }
 
   constructor() {
     this.storage = window.localStorage;
+  }
+
+  calculate(key: string) {
+    const stringTudo = this.storage.getItem(key);
+    const eletrodomesticos: EletrodomesticoSimulado[] = JSON.parse(stringTudo!);
+
+    this.totalCusto.next(0);
+    this.totalKw.next(0);
+
+    eletrodomesticos.forEach((eletro) => {
+      this.totalCusto.next(this.totalCusto.getValue() + eletro.custo!);
+      this.totalKw.next(this.totalKw.getValue() + eletro.kw!);
+      console.log(this.totalCusto, this.totalKw);
+    });
   }
 
   set(key: string, value: any): boolean {
@@ -49,18 +73,24 @@ export class LocalStorageService {
     eletrodomesticoToSaved.aparelho = eletrodometico.nome!;
     eletrodomesticoToSaved.qtd = eletrodometico.qtd!;
     eletrodomesticoToSaved.uso = eletrodometico.uso!;
-    eletrodomesticoToSaved.kw = (eletrodometico.potencia! *eletrodometico.uso! * eletrodometico.qtd! * 30)/1000;
-    eletrodomesticoToSaved.custo = eletrodomesticoToSaved.kw * 0.82;
-      
+    eletrodomesticoToSaved.kw =
+      (eletrodometico.potencia! *
+        eletrodometico.uso! *
+        eletrodometico.qtd! *
+        30) /
+      1000;
+    eletrodomesticoToSaved.custo = eletrodomesticoToSaved.kw * 0.54;
 
     if (arrayEletros && arrayEletros.length !== 0) {
       eletrodomesticoToSaved.id = arrayEletros[arrayEletros.length - 1].id! + 1;
       arrayEletros.push(eletrodomesticoToSaved);
 
       this.set(key, arrayEletros);
+      this.calculate(key);
     } else {
       eletrodomesticoToSaved.id = 1;
       this.set(key, [eletrodomesticoToSaved]);
+      this.calculate(key);
     }
   }
 

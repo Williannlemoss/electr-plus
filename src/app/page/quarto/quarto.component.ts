@@ -98,7 +98,14 @@ export class QuartoComponent implements OnInit {
     this.dataSource =
       this.localStorageService.getEletrodomesticoConsumer('quarto-consumer');
 
-    this.calcularCusto();
+      this.localStorageService.calculate('quarto-consumer');
+
+    this.localStorageService.returnTotalCusto.subscribe((res) => {
+      this.custo = res;
+    });
+    this.localStorageService.returnTotalKw.subscribe((res) => {
+      this.kwm = res;
+    });
   }
 
   openDialogWithValue(eletro: Eletrodomestico) {
@@ -149,12 +156,6 @@ export class QuartoComponent implements OnInit {
 
     this.dataSource =
       this.localStorageService.getEletrodomesticoConsumer('quarto-consumer');
-  }
-
-  calcularCusto() {
-    this.dataSource.forEach((eletrodomestico: EletrodomesticoSimulado) => {
-      this.kwm = eletrodomestico.kw! + this.kwm;
-      this.custo = eletrodomestico.custo! + this.custo;
-    });
+      this.localStorageService.calculate("quarto-consumer");
   }
 }
