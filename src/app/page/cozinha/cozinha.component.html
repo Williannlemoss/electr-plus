@@ -15,9 +15,7 @@
         </li>
       </ul>
 
-      <button class="mb-4" (click)="openDialog()">
-        Novo Eletrodoméstico
-      </button>
+      <button class="mb-4" (click)="openDialog()">Novo Eletrodoméstico</button>
     </div>
 
     <div
@@ -35,31 +33,46 @@
         <!-- Position Column -->
         <ng-container matColumnDef="qtd">
           <th mat-header-cell *matHeaderCellDef>Qtd</th>
-          <td mat-cell *matCellDef="let element">{{ element.qtd }}</td>
+          <td mat-cell *matCellDef="let element">
+            <p>{{ element.qtd }}</p>
+          </td>
         </ng-container>
 
         <!-- Name Column -->
         <ng-container matColumnDef="aparelho">
           <th mat-header-cell *matHeaderCellDef>Aparelho</th>
-          <td mat-cell *matCellDef="let element">{{ element.aparelho }}</td>
+          <td mat-cell *matCellDef="let element">
+            <p>{{ element.aparelho }}</p>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dias">
+          <th mat-header-cell *matHeaderCellDef>Dias</th>
+          <td mat-cell *matCellDef="let element">
+            <p>{{ element.dias }}</p>
+          </td>
         </ng-container>
 
         <!-- Weight Column -->
         <ng-container matColumnDef="uso">
-          <th mat-header-cell *matHeaderCellDef>Uso/Dia</th>
-          <td mat-cell *matCellDef="let element">{{ element.uso }} Hrs</td>
+          <th mat-header-cell *matHeaderCellDef>Horas</th>
+          <td mat-cell *matCellDef="let element">
+            <p>{{ element.uso }} Hrs</p>
+          </td>
         </ng-container>
 
         <!-- Symbol Column -->
         <ng-container matColumnDef="kw">
           <th mat-header-cell *matHeaderCellDef>KW/Mês</th>
-          <td mat-cell *matCellDef="let element">{{ element.kw }}</td>
+          <td mat-cell *matCellDef="let element">
+            <p>{{ element.kw }}</p>
+          </td>
         </ng-container>
 
         <ng-container matColumnDef="custo">
           <th mat-header-cell *matHeaderCellDef>Custo/Mês</th>
           <td mat-cell *matCellDef="let element">
-            {{ element.custo | currency: "R$" }}
+            <p>{{ element.custo | currency: "R$" }}</p>
           </td>
         </ng-container>
 
@@ -96,23 +109,24 @@
       <div class="info-content">
         <div>
           <h3>Custo</h3>
-          {{ this.kwm | currency: "Kw/M "}}
+          <h4>
+            {{ this.kwm | currency: "Kw/M " }}
+          </h4>
+          
         </div>
 
         <div>
           <h3>Consumo Mensal</h3>
-          <h4>{{this.custo | currency: "R$"}}</h4>
+          <h4>{{ this.custo | currency: "R$" }}</h4>
         </div>
 
         <div>
-          <h3>Tarifa</h3>
-          <h4>R$0,82701</h4>
+          <h3>Tarifa média CE</h3>
+          <h4>R$0,68</h4>
         </div>
       </div>
 
-      <button (click)="openDialogResult()">
-        Finalizar simulação
-      </button>
+      <button (click)="openDialogResult()">Finalizar simulação</button>
     </div>
   </section>
 </main>

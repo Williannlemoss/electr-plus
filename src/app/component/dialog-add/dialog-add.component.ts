@@ -23,6 +23,7 @@ export class DialogAddComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       nome: ['', [Validators.required]],
       qtd: ['', [Validators.required]],
+      dias: ['', Validators.required],
       uso: ['', [Validators.required]],
       potencia: ['', [Validators.required]],
     });

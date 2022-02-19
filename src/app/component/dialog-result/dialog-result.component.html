@@ -51,12 +51,13 @@
 
   <section>
     <h2>Gráfico do resultado da simulação</h2>
+    <p class="mt-2 mb-2">Custo total no mês: {{ this.totalCusto | currency: "R$"}}</p>
 
     <div>
       <canvas id="doughnut">{{ chart }}</canvas>
     </div>
 
-    <p class="mt-2">Valor em R$ do consumo total de cada cômodo</p>
+    <p class="mt-2">Valores em R$ de cada cômodo durante o mês</p>
 
     <button [routerLink]="['/']" mat-dialog-close (click)="clear()">
       <span>Encerrar Simulação</span>

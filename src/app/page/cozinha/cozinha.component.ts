@@ -10,6 +10,7 @@ import { Eletrodomestico } from 'src/models/eletrodomestico.model';
 export interface PeriodicElement {
   qtd: number;
   aparelho: string;
+  dias: number, 
   uso: number;
   kw: string;
   custo: number;
@@ -21,6 +22,7 @@ const lavadora = new Eletrodomestico(
   11,
   'https://electrplus.s3.us-west-2.amazonaws.com/cozinha/maquina.png',
   'Lavadora',
+  30,
   1,
   8,
   75
@@ -30,6 +32,7 @@ const fogao = new Eletrodomestico(
   12,
   'https://electrplus.s3.us-west-2.amazonaws.com/cozinha/fogao.png',
   'Fogão',
+  30,
   1,
   3,
   3000
@@ -39,6 +42,7 @@ const geladeira = new Eletrodomestico(
   13,
   'https://electrplus.s3.us-west-2.amazonaws.com/cozinha/geladeira.png',
   'Geladeira',
+  30,
   1,
   24,
   250
@@ -48,6 +52,7 @@ const cafeteira = new Eletrodomestico(
   14,
   'https://electrplus.s3.us-west-2.amazonaws.com/cozinha/cafeteira.png',
   'Cafeteira',
+  30,
   1,
   1,
   220
@@ -66,6 +71,7 @@ export class CozinhaComponent implements OnInit, OnChanges {
   displayedColumns: string[] = [
     'qtd',
     'aparelho',
+    'dias',
     'uso',
     'kw',
     'custo',

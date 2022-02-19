@@ -10,6 +10,7 @@ import { Eletrodomestico } from 'src/models/eletrodomestico.model';
 export interface PeriodicElement {
   qtd: number;
   aparelho: string;
+  dias: number;
   uso: number;
   kw: string;
   custo: number;
@@ -21,6 +22,7 @@ const luz = new Eletrodomestico(
   6,
   'https://electrplus.s3.us-west-2.amazonaws.com/sala/luminaria.png',
   'Iluminação',
+  30,
   1,
   12,
   75
@@ -30,6 +32,7 @@ const telefone = new Eletrodomestico(
   7,
   'https://electrplus.s3.us-west-2.amazonaws.com/sala/telefone.png',
   'Telefone',
+  30,
   1,
   1,
   75
@@ -38,6 +41,7 @@ const som = new Eletrodomestico(
   8,
   'https://electrplus.s3.us-west-2.amazonaws.com/sala/som.png',
   'Som',
+  30,
   1,
   2,
   220
@@ -46,6 +50,7 @@ const ar = new Eletrodomestico(
   9,
   'https://electrplus.s3.us-west-2.amazonaws.com/sala/dvd.png',
   'DVD',
+  30,
   1,
   5,
   950
@@ -54,6 +59,7 @@ const televisão = new Eletrodomestico(
   10,
   'https://electrplus.s3.us-west-2.amazonaws.com/sala/tv.png',
   'Televisão',
+  30,
   1,
   6,
   220
@@ -72,6 +78,7 @@ export class SalaComponent implements OnInit {
   displayedColumns: string[] = [
     'qtd',
     'aparelho',
+    'dias',
     'uso',
     'kw',
     'custo',

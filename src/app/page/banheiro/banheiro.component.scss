@@ -4,10 +4,12 @@ main {
 
   table th {
     text-align: center;
+    width: 20%;
   }
-
+  
   table td {
     text-align: center;
+    width: 20%;
 
     mat-icon {
       cursor: pointer;
@@ -96,15 +98,12 @@ main {
     }
 
     table {
-      width: 90%;
-      font-size: 12px;
+      width: 100%;
+      overflow-y: auto;
 
-      button {
-        background: none;
-        cursor: pointer;
-        outline: 0;
-        border: none;
-        color: red;
+      p {
+        font-size: 12px;
+        margin: 0;
       }
     }
 

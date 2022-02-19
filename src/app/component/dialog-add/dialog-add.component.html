@@ -15,33 +15,24 @@
         <input matInput placeholder="Ex: 1" formControlName="qtd" />
       </mat-form-field>
 
-      <div style="display: flex; justify-content: space-between">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Dias de uso</mat-label>
+          <input matInput placeholder="Ex: 1" formControlName="dias" />
+        </mat-form-field>
+
         <mat-form-field appearance="outline">
           <mat-label>Tempo de Uso</mat-label>
           <input matInput placeholder="Ex: 4" formControlName="uso" />
         </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>Horas/D</mat-label>
-          <input disabled matInput />
-        </mat-form-field>
       </div>
 
-      <div style="display: flex; justify-content: space-between">
-        <mat-form-field appearance="outline">
-          <mat-label>Potência</mat-label>
-          <input matInput placeholder="Ex: 2" formControlName="potencia" />
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>w</mat-label>
-          <input disabled matInput />
-        </mat-form-field>
-      </div>
+      <mat-form-field appearance="outline">
+        <mat-label>Potência em Watts</mat-label>
+        <input matInput placeholder="Ex: 2 Whatts" formControlName="potencia" />
+      </mat-form-field>
     </form>
   </div>
 
-  <button mat-dialog-close (click)="salvarEletrodomestico()">
-    Adicionar
-  </button>
+  <button mat-dialog-close (click)="salvarEletrodomestico()">Adicionar</button>
 </main>

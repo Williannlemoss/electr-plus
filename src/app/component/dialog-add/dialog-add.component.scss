@@ -18,7 +18,7 @@ main {
     text-align: center;
     margin: 10px;
     color: white;
-    background-color: #C4C4C4;
+    background-color: #c4c4c4;
     width: 100px;
     height: 100px;
   }
@@ -28,26 +28,30 @@ main {
       width: 100%;
     }
 
-    div mat-form-field {
+    div {
+      display: flex;
+      justify-content: space-between;
+
+      mat-form-field:first-child {
+        width: 48%;
+      }
+
+      mat-form-field:last-child {
+        width: 48%;
+      }
     }
 
-    div mat-form-field:first-child {
-      width: 73%;
-    }
-
-    div mat-form-field:last-child {
-      width: 25%;
-    }
+  
   }
 
-  button{
+  button {
     border: none;
     border-radius: 8px;
     outline: 0;
     cursor: pointer;
     width: 200px;
     height: 40px;
-    background: #C4C4C4;
+    background: #c4c4c4;
     font-weight: 500;
   }
 }

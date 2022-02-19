@@ -29,12 +29,13 @@ main {
       width: 100%;
     }
 
-    div mat-form-field:first-child {
-      width: 73%;
-    }
+    div{
+      display: flex;
+      justify-content: space-between;
 
-    div mat-form-field:last-child {
-      width: 25%;
+      mat-form-field{
+        width: 48%;
+      }
     }
   }
 

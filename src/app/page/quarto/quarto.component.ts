@@ -10,6 +10,7 @@ import { DialogEletroComponent } from 'src/app/component/dialog-eletro/dialog-el
 export interface PeriodicElement {
   qtd: number;
   aparelho: string;
+  dias: number,
   uso: number;
   kw: string;
   custo: number;
@@ -20,6 +21,7 @@ const ar = new Eletrodomestico(
   1,
   'https://electrplus.s3.us-west-2.amazonaws.com/quarto/ar-cond.png',
   'Ar Condicionado',
+  30,
   1,
   7,
   950
@@ -28,6 +30,7 @@ const tv = new Eletrodomestico(
   2,
   'https://electrplus.s3.us-west-2.amazonaws.com/quarto/tv-certa.png',
   'Televisão',
+  30,
   1,
   6,
   150
@@ -36,6 +39,7 @@ const luz = new Eletrodomestico(
   3,
   'https://electrplus.s3.us-west-2.amazonaws.com/quarto/luminaria.png',
   'Iluminação',
+  30,
   1,
   12,
   75
@@ -44,6 +48,7 @@ const ventilador = new Eletrodomestico(
   4,
   'https://electrplus.s3.us-west-2.amazonaws.com/quarto/ventilador.png',
   'Ventilador',
+  30,
   1,
   10,
   150
@@ -53,6 +58,7 @@ const computador = new Eletrodomestico(
   5,
   'https://electrplus.s3.us-west-2.amazonaws.com/quarto/notebook.png',
   'Computador',
+  30,
   1,
   8,
   50
@@ -71,6 +77,7 @@ export class QuartoComponent implements OnInit {
   displayedColumns: string[] = [
     'qtd',
     'aparelho',
+    'dias',
     'uso',
     'kw',
     'custo',

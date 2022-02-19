@@ -2,7 +2,7 @@
   <mat-icon mat-dialog-close>close</mat-icon>
 
   <div class="square">
-    <img src="{{eletro.imgUrl}}" alt="">
+    <img src="{{ eletro.imgUrl }}" alt="" />
   </div>
 
   <div class="form-content">
@@ -17,29 +17,22 @@
         <input type="text" matInput formControlName="qtd" />
       </mat-form-field>
 
-      <div style="display: flex; justify-content: space-between">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Dias de Uso</mat-label>
+          <input type="text" matInput formControlName="dias" />
+        </mat-form-field>
+
         <mat-form-field appearance="outline">
           <mat-label>Tempo de Uso</mat-label>
           <input type="text" matInput formControlName="uso" />
         </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>Horas/D</mat-label>
-          <input disabled matInput />
-        </mat-form-field>
       </div>
 
-      <div style="display: flex; justify-content: space-between">
-        <mat-form-field appearance="outline">
-          <mat-label>Potência</mat-label>
-          <input type="text" matInput formControlName="potencia" />
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>w</mat-label>
-          <input disabled matInput />
-        </mat-form-field>
-      </div>
+      <mat-form-field appearance="outline">
+        <mat-label>Potência em Watts</mat-label>
+        <input type="text" matInput formControlName="potencia" />
+      </mat-form-field>
     </form>
   </div>
 

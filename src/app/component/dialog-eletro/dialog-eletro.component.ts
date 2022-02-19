@@ -25,6 +25,7 @@ export class DialogEletroComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       nome: [this.data[0].nome],
       qtd: [this.data[0].qtd],
+      dias: [this.data[0].dias],
       uso: [this.data[0].uso],
       potencia: [this.data[0].potencia],
     });

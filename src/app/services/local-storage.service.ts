@@ -204,13 +204,14 @@ export class LocalStorageService {
     eletrodomesticoToSaved.aparelho = eletrodometico.nome!;
     eletrodomesticoToSaved.qtd = eletrodometico.qtd!;
     eletrodomesticoToSaved.uso = eletrodometico.uso!;
+    eletrodomesticoToSaved.dias = eletrodometico.dias!;
     eletrodomesticoToSaved.kw =
       (eletrodometico.potencia! *
         eletrodometico.uso! *
         eletrodometico.qtd! *
-        30) /
+        eletrodometico.dias!) /
       1000;
-    eletrodomesticoToSaved.custo = eletrodomesticoToSaved.kw * 0.54;
+    eletrodomesticoToSaved.custo = eletrodomesticoToSaved.kw * 0.68;
 
     if (arrayEletros && arrayEletros.length !== 0) {
       eletrodomesticoToSaved.id = arrayEletros[arrayEletros.length - 1].id! + 1;
