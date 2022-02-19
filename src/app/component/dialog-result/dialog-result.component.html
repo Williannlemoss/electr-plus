@@ -50,6 +50,17 @@
   </section>
 
   <section>
-    <mat-icon mat-dialog-close>close</mat-icon>
+    <h2>Gráfico do resultado da simulação</h2>
+
+    <div>
+      <canvas id="doughnut">{{ chart }}</canvas>
+    </div>
+
+    <p class="mt-2">Valor em R$ do consumo total de cada cômodo</p>
+
+    <button [routerLink]="['/']" mat-dialog-close (click)="clear()">
+      <span>Encerrar Simulação</span>
+      <mat-icon>power_settings_new</mat-icon>
+    </button>
   </section>
 </div>

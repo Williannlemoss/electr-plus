@@ -24,9 +24,38 @@ div {
     width: 100%;
     position: relative;
 
-    mat-icon {
-        position: absolute;
-        right: 0;
+    div {
+      width: 80%;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    p {
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px;
+      font-size: 12px;
+      font-weight: 800;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      outline: 0;
+      border-radius: 5px;
+      background: #ffd32c;
+      color: #000;
+
+      mat-icon {
+        margin-left: 3px;
+      }
     }
   }
 }
